@@ -5,7 +5,7 @@
 <web-app>
   <servlet>
   	<servlet-name>logging</servlet-name>
-  	<servlet-class>de.phoet.LoggingServlet</servlet-class>
+  	<servlet-class>de.nofail.LoggingServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>

@@ -22,8 +22,22 @@ cd logging/
 
 h2. Using it within Eclipse
 
+TODO
 Install "m2eclipse":http://m2eclipse.sonatype.org/sites/m2e and "run jetty run":http://run-jetty-run.googlecode.com/svn/trunk/updatesite from their update-sites.
 
 Restart Eclipse and import existing Project into Workspace.
+
+h2. Using it from the command-line
+
+TODO
+Set the M2_REPO path and sets 1.4 compiler, which sucks ass very much. It also restarts the whole container without hotcode replacement which sucks even more.
+
+<pre>
+	mvn eclipse:eclipse
+	mvn jetty:run
+	
+</pre>
+
+
 
 Have a look at the "Mavenrepository":http://mvnrepository.com if you are looking for any libs.
