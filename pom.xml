@@ -1,16 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>de.phoet</groupId>
+  <groupId>de.nofail</groupId>
   <artifactId>logging</artifactId>
   <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>logging Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <build>
-    <finalName>logging</finalName>
-  </build>
-    <dependencies>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>logging</name>
+  <url>http://blog.nofail.de/</url>
+  <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -20,7 +17,7 @@
     <dependency>
     	<groupId>log4j</groupId>
     	<artifactId>log4j</artifactId>
-    	<version>1.2.15</version>
+    	<version>1.2.14</version>
     </dependency>
     <dependency>
     	<groupId>javax.servlet</groupId>
@@ -28,5 +25,5 @@
     	<version>2.5</version>
     	<scope>provided</scope>
     </dependency>
-    </dependencies>
+  </dependencies>
 </project>
