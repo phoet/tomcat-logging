@@ -32,7 +32,7 @@ cd tomcat-logging/
 mvn clean package
 </pre>
 
-Maven is a stupid fuck, so it will create your application with Java 1.4 compatibility by default. You need to fix this in the pom by changing the compiler plugin:
+Maven is a stupid fuck, so it will create your application with Java 1.4 compatibility by default. You need to fix this in the _pom.xml_ by changing the compiler plugin:
 
 bc.. 	<build>
 		<plugins>
@@ -80,7 +80,7 @@ Go to _Debug Configurations_ and use the _tomcat-logging_ launcher.
 
 You should be able to open "the servlet":http://localhost:8080/tomcat-logging/ in your browser.
 
-h2. log4j configuration at runtime
+h2. Configure log4j at runtime
 
 Run the servlet and change something in the _tomcat-logging-log4j.xml_ configuration file. The behavior of log4j should change while the servlet is running. 
 
