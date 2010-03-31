@@ -16,28 +16,48 @@ echo export PATH="~/Library/maven/bin":\$PATH >> ~/.profile
 # open new bash and go to the workspace
 cd ~/Documents/workspace/
 # let maven create a webapp
-mvn archetype:create -DgroupId=de.phoet -DartifactId=logging -DarchetypeArtifactId=maven-archetype-webapp
-cd logging/
+mvn archetype:create -DgroupId=de.phoet -DartifactId=tomcat-logging -DarchetypeArtifactId=maven-archetype-webapp
+cd tomcat-logging/
 </pre>
 
-h2. Using it within Eclipse
+h2. Running from the command-line
 
-TODO
-Install "m2eclipse":http://m2eclipse.sonatype.org/sites/m2e and "run jetty run":http://run-jetty-run.googlecode.com/svn/trunk/updatesite from their update-sites.
-
-Restart Eclipse and import existing Project into Workspace.
-
-h2. Using it from the command-line
-
-TODO
-Set the M2_REPO path and sets 1.4 compiler, which sucks ass very much. It also restarts the whole container without hotcode replacement which sucks even more.
+You can run the example directly from the command-line by using the mvn-command:
 
 <pre>
-	mvn eclipse:eclipse
-	mvn jetty:run
-	
+mvn jetty:run &
+open http://localhost:8080/tomcat-logging/	
 </pre>
 
+The Maven-Jetty-Plugin is configured to pickup Changes to the sources every 10 seconds. The plugin does not do hot code replacement but instead restarts the whole servlet context, wich is not very fast. So if you play around with the code, you should consider doing it within Eclipse.
 
+
+h2. Using it within Eclipse (not recommended)
+
+Maven has an embedded task to build up an Eclipse .classpath and .project file from an existing pom.xml:
+
+<pre>
+mvn eclipse:eclipse
+</pre>
+
+The resulting Eclipse configuration has some problems. You have to set the M2_REPO classpath variable by hand to resolve dependencies properly and it sets the Java compiler to Java 1.4, which sucks ass very much. It also sets a bad JRE System Library wich one should reset to the default.
+
+h2. Better with Eclipse plugins
+
+If you want a better solution, you need to install some Eclipse plugins that enable you to run the example form within Eclipse.
+ 
+Install "m2eclipse":http://m2eclipse.sonatype.org/sites/m2e and "run jetty run":http://run-jetty-run.googlecode.com/svn/trunk/updatesite from their update-sites.
+
+Restart Eclipse and import existing Project _tomcat-logging_ into Workspace.
+
+Go to _Debug Configurations_ and use the _tomcat-logging_ launcher.
+
+You should be able to open "the servlet":http://localhost:8080/tomcat-logging/ in your browser.
+
+h2. log4j configuration at runtime
+
+Run the servlet and change something in the _tomcat-logging-log4j.xml_ configuration file. The behavior of log4j should change while the servlet is running. 
+
+h2. More
 
 Have a look at the "Mavenrepository":http://mvnrepository.com if you are looking for any libs.

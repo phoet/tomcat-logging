@@ -3,13 +3,27 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <servlet>
-  	<servlet-name>logging</servlet-name>
-  	<servlet-class>de.nofail.LoggingServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>logging</servlet-name>
-  	<url-pattern>/</url-pattern>
-  </servlet-mapping>
+	<servlet>
+		<servlet-name>tomcat-logging</servlet-name>
+		<servlet-class>de.nofail.TomcatLoggingServlet</servlet-class>
+		
+		<!-- init params may be used to configure the servlet listner
+		<init-param>
+			<param-name>delay</param-name>
+			<param-value>123456</param-value>
+		</init-param>
+		 -->
+		 
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>tomcat-logging</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- listener for configuring the log4j watchdog -->
+	<listener>
+		<listener-class>de.nofail.TomcatLoggingListener</listener-class>
+	</listener>
+
 </web-app>

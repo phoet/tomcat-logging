@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="RunJettyRunWebApp">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/tomcat-logging"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="RunJettyRunWebAppClassPathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="runjettyrun.Bootstrap"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="logging"/>
-<stringAttribute key="run_jetty_run.CONTEXT_ATTR" value="/logging"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="tomcat-logging"/>
+<stringAttribute key="run_jetty_run.CONTEXT_ATTR" value="/tomcat-logging"/>
 <stringAttribute key="run_jetty_run.KEYSTORE_ATTR" value=""/>
 <stringAttribute key="run_jetty_run.KEY_PWD_ATTR" value=""/>
 <stringAttribute key="run_jetty_run.PORT_ATTR" value="8080"/>
