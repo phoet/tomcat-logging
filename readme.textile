@@ -13,40 +13,66 @@ unzip apache-maven-2.2.1-bin.zip
 ln -s apache-maven-2.2.1 maven
 # add maven executables to the PATH
 echo export PATH="~/Library/maven/bin":\$PATH >> ~/.profile
-# open new bash and go to the workspace
+# open a new bash and check maven is running
+mvn --version
+</pre>
+
+h2. Creating a Maven webapp 
+
+Now that Maven is running on your system, you can use it to create a standard webapp: 
+
+<pre>
+# go to the workspace
 cd ~/Documents/workspace/
 # let maven create a webapp
 mvn archetype:create -DgroupId=de.phoet -DartifactId=tomcat-logging -DarchetypeArtifactId=maven-archetype-webapp
+# go to the webapp
 cd tomcat-logging/
+# let maven do the work
+mvn clean package
 </pre>
 
-h2. Running from the command-line
+Maven is a stupid fuck, so it will create your application with Java 1.4 compatibility by default. You need to fix this in the pom by changing the compiler plugin:
 
-You can run the example directly from the command-line by using the mvn-command:
+bc.. 	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			... 
+
+h2. Running from the command line
+
+You can run the example directly from the command line through Maven:
 
 <pre>
 mvn jetty:run &
 open http://localhost:8080/tomcat-logging/	
 </pre>
 
-The Maven-Jetty-Plugin is configured to pickup Changes to the sources every 10 seconds. The plugin does not do hot code replacement but instead restarts the whole servlet context, wich is not very fast. So if you play around with the code, you should consider doing it within Eclipse.
+The Maven Jetty plugin is configured (no, this is no default!) to pick up changes to the sources every 10 seconds. The plugin does not do hot code replacement but instead restarts the whole servlet context, which is very slow. So if you play around with the code, you should consider doing it within Eclipse.
 
+h2. MVN for Eclipse integration (not recommended)
 
-h2. Using it within Eclipse (not recommended)
-
-Maven has an embedded task to build up an Eclipse .classpath and .project file from an existing pom.xml:
+Maven has an embedded task to build up an Eclipse _.classpath_ and _.project_ file from an existing _pom.xml_ :
 
 <pre>
 mvn eclipse:eclipse
 </pre>
 
-The resulting Eclipse configuration has some problems. You have to set the M2_REPO classpath variable by hand to resolve dependencies properly and it sets the Java compiler to Java 1.4, which sucks ass very much. It also sets a bad JRE System Library wich one should reset to the default.
+The resulting Eclipse configuration has some problems. You have to set the M2_REPO classpath variable by hand to resolve dependencies properly and it sets the Java compiler to Java 1.4, which sucks ass very much. It also sets a bad JRE System Library which you should reset to the default.
 
 h2. Better with Eclipse plugins
 
 If you want a better solution, you need to install some Eclipse plugins that enable you to run the example form within Eclipse.
  
-Install "m2eclipse":http://m2eclipse.sonatype.org/sites/m2e and "run jetty run":http://run-jetty-run.googlecode.com/svn/trunk/updatesite from their update-sites.
+Install "m2eclipse":http://m2eclipse.sonatype.org/sites/m2e and "run jetty run":http://run-jetty-run.googlecode.com/svn/trunk/updatesite from their update sites.
 
 Restart Eclipse and import existing Project _tomcat-logging_ into Workspace.
 
