@@ -3,17 +3,17 @@ h2. Installing Maven
 Download "latest Maven":http://maven.apache.org/download.html unzip it and add it to your path:
 
 <pre>
-# go to the place you want to install maven to
+# go to the place you want to install Maven to
 cd ~/Library
-# download latest maven version
+# download latest Maven version
 curl -O http://apache.autinity.de/maven/binaries/apache-maven-2.2.1-bin.zip
 # unzip the archive
 unzip apache-maven-2.2.1-bin.zip
 # add a symlink for convenience
 ln -s apache-maven-2.2.1 maven
-# add maven executables to the PATH
+# add Maven executables to the PATH
 echo export PATH="~/Library/maven/bin":\$PATH >> ~/.profile
-# open a new bash and check maven is running
+# open a new bash and check Maven is running
 mvn --version
 </pre>
 
@@ -24,11 +24,11 @@ Now that Maven is running on your system, you can use it to create a standard we
 <pre>
 # go to the workspace
 cd ~/Documents/workspace/
-# let maven create a webapp
-mvn archetype:create -DgroupId=de.phoet -DartifactId=tomcat-logging -DarchetypeArtifactId=maven-archetype-webapp
+# let Maven create a webapp
+mvn archetype:generate -DgroupId=de.phoet -DartifactId=tmp -Dversion=1.0.0-SNAPSHOT -DarchetypeArtifactId=maven-archetype-webapp
 # go to the webapp
 cd tomcat-logging/
-# let maven do the work
+# let Maven create a distributable war
 mvn clean package
 </pre>
 
@@ -58,15 +58,18 @@ open http://localhost:8080/tomcat-logging/
 
 The Maven Jetty plugin is configured (no, this is no default!) to pick up changes to the sources every 10 seconds. The plugin does not do hot code replacement but instead restarts the whole servlet context, which is very slow. So if you play around with the code, you should consider doing it within Eclipse.
 
-h2. MVN for Eclipse integration (not recommended)
+h2. MVN for Eclipse integration
 
 Maven has an embedded task to build up an Eclipse _.classpath_ and _.project_ file from an existing _pom.xml_ :
 
 <pre>
+# configure your workspace (do not use ~ to point to your home!)
+mvn eclipse:configure-workspace -Declipse.workspace=../
+# create Eclipse files
 mvn eclipse:eclipse
 </pre>
 
-The resulting Eclipse configuration has some problems. You have to set the M2_REPO classpath variable by hand to resolve dependencies properly and it sets the Java compiler to Java 1.4, which sucks ass very much. It also sets a bad JRE System Library which you should reset to the default.
+The resulting Eclipse configuration sets the Java compiler to Java 1.4 and sets a bad JRE System Library which you should reset to the default.
 
 h2. Better with Eclipse plugins
 
