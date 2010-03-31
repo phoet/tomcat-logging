@@ -25,7 +25,7 @@ Now that Maven is running on your system, you can use it to create a standard we
 # go to the workspace
 cd ~/Documents/workspace/
 # let Maven create a webapp
-mvn archetype:generate -DgroupId=de.phoet -DartifactId=tmp -Dversion=1.0.0-SNAPSHOT -DarchetypeArtifactId=maven-archetype-webapp
+mvn archetype:generate -DgroupId=de.nofail -DartifactId=tmp -Dversion=1.0.0-SNAPSHOT -DarchetypeArtifactId=maven-archetype-webapp
 # go to the webapp
 cd tomcat-logging/
 # let Maven create a distributable war
