@@ -26,4 +26,9 @@
 		<listener-class>de.nofail.TomcatLoggingListener</listener-class>
 	</listener>
 
+	<!-- listener for configuring JMX -->
+	<listener>
+		<listener-class>de.nofail.JMXListener</listener-class>
+	</listener>
+	
 </web-app>
