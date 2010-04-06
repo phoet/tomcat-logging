@@ -24,7 +24,7 @@ public class TomcatLoggingServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(TomcatLoggingServlet.class);
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
 		log.debug("responding to request=" + request);
 
 		String readme = FileUtils.readFileToString(new File("readme.textile"));
@@ -36,7 +36,7 @@ public class TomcatLoggingServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 }

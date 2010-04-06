@@ -7,12 +7,14 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 /**
+ * Listener for JMX management.
+ * 
  * @author nofail
  */
 public class JMXListener implements ServletContextListener {
 
 	@Override
-	public void contextInitialized(ServletContextEvent sce) {
+	public void contextInitialized(final ServletContextEvent sce) {
 		try {
 			TomcatLogging mbean = new TomcatLogging();
 			ObjectName clutter = new ObjectName("de.nofail:type=TomcatLogging");
@@ -23,7 +25,7 @@ public class JMXListener implements ServletContextListener {
 	}
 
 	@Override
-	public void contextDestroyed(ServletContextEvent sce) {
-
+	public void contextDestroyed(final ServletContextEvent sce) {
+		// noop
 	}
 }

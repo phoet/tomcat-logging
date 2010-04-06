@@ -28,7 +28,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 public class TomcatLoggingListener implements ServletContextListener {
 
 	@Override
-	public void contextInitialized(ServletContextEvent sce) {
+	public void contextInitialized(final ServletContextEvent sce) {
 		System.out.println("Initializing the servet context!");
 		ServletContext servletContext = sce.getServletContext();
 		try {
@@ -44,7 +44,7 @@ public class TomcatLoggingListener implements ServletContextListener {
 	}
 
 	@Override
-	public void contextDestroyed(ServletContextEvent sce) {
+	public void contextDestroyed(final ServletContextEvent sce) {
 		System.out.println("Destroying the servet context!");
 		// this should not be necessary
 		Logger.getRootLogger().getLoggerRepository().shutdown();
